@@ -1,0 +1,10 @@
+# clear workplace
+rm(list =ls())
+
+system("plink.exe --vcf genotipos.vcf --make-bed --allow-no-sex --out output_prefix")
+
+system("plink.exe --bfile output_prefix --pheno fenotipos.txt --make-bed --allow-no-sex --out output_final")
+
+system("plink.exe --bfile output_final --pheno fenotipos.txt --pheno-name Phenotype1 --allow-no-sex --assoc --out resultado_asociacion")
+
+system("plink.exe --bfile output_final --pheno fenotipos.txt --pheno-name Phenotype1 --make-bed --allow-no-sex --out resultado_asociacion --linear")
